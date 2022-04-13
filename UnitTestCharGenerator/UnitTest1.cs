@@ -18,13 +18,13 @@ namespace UnitTestCharGenerator
             int count2 = 0;
             foreach (KeyValuePair<char, int> ch in stat)
             {
-                if (ch.Equals('à'))
+                if (ch.Key.Equals('а'))
                 {
-                    count1++;
+                    count1 = ch.Value;
                 }
-                else if (ch.Equals('ô'))
+                else if (ch.Key.Equals('ф'))
                 {
-                    count2++;
+                    count2=ch.Value;
                 }
             }
             Assert.IsTrue(count1 > count2);
@@ -36,7 +36,7 @@ namespace UnitTestCharGenerator
             BigramsGenerator gen = new BigramsGenerator();
             gen.saveToFile("results/first.txt");
             string text = File.ReadAllText("results/first.txt");
-            bool flag = text.Contains("ãá");
+            bool flag = text.Contains("жз");
             Assert.IsFalse(flag);
         }
 
@@ -46,8 +46,8 @@ namespace UnitTestCharGenerator
             BigramsGenerator gen = new BigramsGenerator();
             gen.saveToFile("results/first.txt");
             string text = File.ReadAllText("results/first.txt");
-            string bigr1 = "îâ";
-            string bigr2 = "áæ";
+            string bigr1 = "ов";
+            string bigr2 = "нл";
             int count1 = (text.Length - text.Replace(bigr1, "").Length) / bigr1.Length;
             int count2 = (text.Length - text.Replace(bigr2, "").Length) / bigr2.Length;
             Assert.IsFalse(count1 > count2);
@@ -63,13 +63,13 @@ namespace UnitTestCharGenerator
             int count2 = 0;
             foreach (var s in stat)
             {
-                if (s.Equals("è"))
+                if (s.Key.Equals("и"))
                 {
-                    count1++;
+                    count1 = s.Value;
                 }
-                else if (s.Equals("êîòîðûé"))
+                else if (s.Key.Equals("который"))
                 {
-                    count2++;
+                    count2 = s.Value;
                 }
             }
             Assert.IsTrue(count1 > count2);
@@ -83,9 +83,9 @@ namespace UnitTestCharGenerator
             int count = 0;
             foreach (KeyValuePair<string, int> s in stat)
             {
-                if (s.Equals("è"))
+                if (s.Key.Equals("и"))
                 {
-                    count++;
+                    count = s.Value;
                 }
             }
             Assert.IsTrue(count/1000.0 >= 0.1);
@@ -101,13 +101,13 @@ namespace UnitTestCharGenerator
             int count2 = 0;
             foreach (KeyValuePair<string, int> s in stat)
             {
-                if (s.Equals("è íå"))
+                if (s.Key.Equals("и не"))
                 {
-                    count1++;
+                    count1 = s.Value;
                 }
-                else if (s.Equals("íåñìîòðÿ íà"))
+                else if (s.Key.Equals("несмотря на"))
                 {
-                    count2++;
+                    count2 = s.Value;
                 }
             }
             Assert.IsTrue(count1 > count2);
@@ -121,9 +121,9 @@ namespace UnitTestCharGenerator
             int count = 0;
             foreach (KeyValuePair<string, int> s in stat)
             {
-                if (s.Equals("è íå"))
+                if (s.Key.Equals("и не"))
                 {
-                    count++;
+                    count = s.Value;
                 }
             }
             Assert.IsTrue(count/1000.00 >= 0.03);
