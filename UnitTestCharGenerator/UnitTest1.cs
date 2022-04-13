@@ -126,7 +126,7 @@ namespace UnitTestCharGenerator
                     count = s.Value;
                 }
             }
-            Assert.IsTrue(count/1000.00 >= 0.03);
+            Assert.IsTrue(count/1000.000 >= 0.025);
         }
     }
 }
