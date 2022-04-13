@@ -58,10 +58,10 @@ namespace UnitTestCharGenerator
         public void TestMethod4()
         {
             WordsGenerator gen = new WordsGenerator();
-            var stat = gen.saveToFile("results/second.txt");
+            SortedDictionary<string, int> stat = gen.saveToFile("results/second.txt");
             int count1 = 0;
             int count2 = 0;
-            foreach (var s in stat)
+            foreach (KeyValuePair<string, int> s in stat)
             {
                 if (s.Key.Equals("и"))
                 {
